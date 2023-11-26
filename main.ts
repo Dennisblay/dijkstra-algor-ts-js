@@ -1,6 +1,6 @@
-import Graph, {dijkstra} from "./dijkstra/dijkstra.js";
+import HighLevelGraph, {dijkstra} from "./dijkstra/dijkstra.js";
 
-const newGraph = new Graph()
+const newGraph = new HighLevelGraph()
 
 type Edges = [string, string, number]
 const edges: Edges[] = [

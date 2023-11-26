@@ -1,4 +1,4 @@
-class Graph {
+class HighLevelGraph {
     edges: { [key: string]: string[] };
     weights: { [key: string]: number };
 
@@ -31,7 +31,7 @@ class Graph {
 }
 
 
-export const dijkstra = (graph: Graph, initial: string, end: string): string[] => {
+export const dijkstra = (graph: HighLevelGraph, initial: string, end: string): string[] => {
     /*
     shortest paths is a dict of nodes
     whose value is a tuple of (previous node, weight)
@@ -86,4 +86,4 @@ export const dijkstra = (graph: Graph, initial: string, end: string): string[] =
 }
 
 
-export default Graph;
+export default HighLevelGraph;
