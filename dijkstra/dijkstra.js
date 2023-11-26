@@ -24,8 +24,10 @@ class Graph {
     }
 }
 export const dijkstra = (graph, initial, end) => {
-    /*shortest paths is a dict of nodes
-    whose value is a tuple of (previous node, weight)*/
+    /*
+    shortest paths is a dict of nodes
+    whose value is a tuple of (previous node, weight)
+    */
     const shortestPaths = { [initial]: ['', 0] };
     let currentNode = initial;
     const visited = new Set();
@@ -44,18 +46,18 @@ export const dijkstra = (graph, initial, end) => {
                     shortestPaths[nextNode] = [currentNode, weight];
                 }
             }
-            const nextDestinations = {};
-            for (const node in shortestPaths) {
-                if (!(visited.has(node))) {
-                    nextDestinations[node] = shortestPaths[node];
-                }
-            }
-            if (Object.keys(nextDestinations).length === 0)
-                return ["Route Not Possible"];
-            currentNode = Object.keys(nextDestinations).reduce((a, b) => {
-                return nextDestinations[a][1] < nextDestinations[b][1] ? a : b;
-            });
         }
+        const nextDestinations = {};
+        for (const node in shortestPaths) {
+            if (!(visited.has(node))) {
+                nextDestinations[node] = shortestPaths[node];
+            }
+        }
+        if (Object.keys(nextDestinations).length === 0)
+            return ["Route Not Possible"];
+        currentNode = Object.keys(nextDestinations).reduce((a, b) => {
+            return nextDestinations[a][1] < nextDestinations[b][1] ? a : b;
+        });
     }
     const path = [];
     while (currentNode !== initial) {

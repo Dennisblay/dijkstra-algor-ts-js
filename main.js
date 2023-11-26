@@ -25,4 +25,4 @@ for (const edge of edges) {
 }
 // console.log(newGraph.edges)
 // console.log(newGraph.weights)
-console.log(dijkstra(newGraph, "X", "Y"));
+console.log(dijkstra(newGraph, "E", "F"));

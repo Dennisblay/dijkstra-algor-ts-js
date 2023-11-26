@@ -32,8 +32,10 @@ class Graph {
 
 
 export const dijkstra = (graph: Graph, initial: string, end: string): string[] => {
-    /*shortest paths is a dict of nodes
-    whose value is a tuple of (previous node, weight)*/
+    /*
+    shortest paths is a dict of nodes
+    whose value is a tuple of (previous node, weight)
+    */
 
     const shortestPaths: { [key: string]: [string, number] } = {[initial]: ['', 0]};
     let currentNode = initial;
@@ -55,22 +57,22 @@ export const dijkstra = (graph: Graph, initial: string, end: string): string[] =
                     shortestPaths[nextNode] = [currentNode, weight];
                 }
             }
-
-            const nextDestinations: { [key: string]: [string, number] } = {};
-            for (const node in shortestPaths) {
-                if (!(visited.has(node))) {
-                    nextDestinations[node] = shortestPaths[node];
-                }
-            }
-            if (Object.keys(nextDestinations).length === 0)
-                return ["Route Not Possible"]
-
-
-            currentNode = Object.keys(nextDestinations).reduce((a, b) => {
-                    return nextDestinations[a][1] < nextDestinations[b][1] ? a : b
-                }
-            );
         }
+        const nextDestinations: { [key: string]: [string, number] } = {};
+        for (const node in shortestPaths) {
+            if (!(visited.has(node))) {
+                nextDestinations[node] = shortestPaths[node];
+            }
+        }
+        if (Object.keys(nextDestinations).length === 0)
+            return ["Route Not Possible"]
+
+
+        currentNode = Object.keys(nextDestinations).reduce((a, b) => {
+                return nextDestinations[a][1] < nextDestinations[b][1] ? a : b
+            }
+        );
+
     }
 
     const path: string[] = [];
